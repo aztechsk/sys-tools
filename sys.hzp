@@ -1,0 +1,26 @@
+<!DOCTYPE CrossStudio_Project_File>
+<solution Name="sys" target="8" version="2">
+  <project Name="sys">
+    <configuration
+      Name="Common"
+      c_only_additional_options="-Wall;-Wextra;-Wstrict-prototypes;-Wmissing-prototypes;-Wmissing-declarations;-Wshadow;-Wpointer-arith;-Wbad-function-cast;-Wcast-qual;-Wjump-misses-init;-Wno-unused-parameter;-Wundef"
+      c_system_include_directories="$(ProjectDir)/../freertos/src/inc"
+      c_user_include_directories="$(ProjectDir)/../inc;$(ProjectDir)/src;$(ProjectDir)/../ucdrv/src"
+      project_directory=""
+      project_type="Library" />
+    <folder Name="src">
+      <file Name="tout.c" file_name="src/tout.c" />
+      <file Name="tout.h" file_name="src/tout.h" />
+      <file Name="tin.c" file_name="src/tin.c" />
+      <file Name="tin.h" file_name="src/tin.h" />
+      <file Name="tsknfo.c" file_name="src/tsknfo.c" />
+      <file Name="tsknfo.h" file_name="src/tsknfo.h" />
+      <file Name="crc.c" file_name="src/crc.c" />
+      <file Name="crc.h" file_name="src/crc.h" />
+      <file Name="tools.c" file_name="src/tools.c" />
+      <file Name="tools.h" file_name="src/tools.h" />
+      <file Name="ramnfo.c" file_name="src/ramnfo.c" />
+      <file Name="ramnfo.h" file_name="src/ramnfo.h" />
+    </folder>
+  </project>
+</solution>
