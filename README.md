@@ -1,7 +1,7 @@
 
 # sys-tools
 
-The **sys-tools** library provides various helper components for the AZTech framework.
+The **sys-tools** C library provides various helper components for the AZTech framework.
 
 ### Library features
 
@@ -10,4 +10,4 @@ The **sys-tools** library provides various helper components for the AZTech fram
 - Serial console (terminal).
 - RAM info (stacks, heap structure).
 - Task status list.
-- Various utility subroutines (functions).
+- Various utility functions.
