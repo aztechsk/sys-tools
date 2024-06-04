@@ -1,7 +1,7 @@
 /*
  * tin.c
  *
- * Copyright (c) 2021 Jan Rusnak <jan@rusnak.sk>
+ * Copyright (c) 2024 Jan Rusnak <jan@rusnak.sk>
  *
  * Permission to use, copy, modify, and distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -185,7 +185,7 @@ static void parse_byte(void)
 			}
 		}
 		return;
-	default     :
+	default :
 		if (*c < '\040' || *c > '\176') {
 			rcve = FALSE;
 			pos = 0;
