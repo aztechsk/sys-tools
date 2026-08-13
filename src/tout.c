@@ -1,7 +1,7 @@
 /*
  * tout.c
  *
- * Copyright (c) 2021 Jan Rusnak <jan@rusnak.sk>
+ * Copyright (c) 2026 Jan Rusnak <jan@rusnak.sk>
  *
  * Permission to use, copy, modify, and distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -21,14 +21,15 @@
 #include <semphr.h>
 #include <queue.h>
 #include <gentyp.h>
+#include <string.h>
+#include <stdio.h>
+#include <stddef.h>
 #include "sysconf.h"
 #include "criterr.h"
 #if defined(TERMOUT_SLEEP) && TERMOUT_SLEEP == 1
 #include "sleep.h"
 #endif
 #include "tout.h"
-#include <string.h>
-#include <stdio.h>
 
 #if TERMOUT == 1
 
@@ -62,12 +63,24 @@ void init_tout(struct tout_odev *odev)
 void init_tout(int (*p_snd_fn)(void *, void *, int), void *p_odev)
 #endif
 {
+	if (TERMOUT_MAX_ROW_LENGTH > 254) {
+		crit_err_exit(BAD_PARAMETER);
+	}
+	if (TERMOUT_BUFFER_SIZE < 2 * (TERMOUT_MAX_ROW_LENGTH + 1)) {
+		crit_err_exit(BAD_PARAMETER);
+	}
 #if TERMOUT_SLEEP == 1
+	if (!odev || !odev->p_snd_fn || !odev->p_en_fn || !odev->p_dis_fn) {
+		crit_err_exit(BAD_PARAMETER);
+	}
 	odv = odev->p_odev;
 	sfn = odev->p_snd_fn;
 	en = odev->p_en_fn;
 	dis = odev->p_dis_fn;
 #else
+	if (!p_snd_fn) {
+		crit_err_exit(BAD_PARAMETER);
+	}
 	odv = p_odev;
 	sfn = p_snd_fn;
 #endif
